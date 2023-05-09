@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import DashBaord from './components/DashBoard'
+import DashBaord from './pages/DashBoard'
 import Login from './pages/Login'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 

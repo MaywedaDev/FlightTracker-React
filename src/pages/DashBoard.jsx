@@ -32,13 +32,13 @@ function DashBoard(){
 		setTime()
 		let startdate = endDate - (timeRange * 60 * 60)
 		// console.log(startdate, endDate)
-		fetch(`https://opensky-network.org/api/flights/aircraft?icao24=3c675a&begin=${startdate}&end=${endDate}`)
+		fetch(`https://opensky-network.org/api/flights/all?begin=${startdate}&end=${endDate}`)
 		.then((res) => res.json()).then((data) => {
 			// console.log(data)
 			setFlights([...data])
 		})
 	}, [timeRange])
-	return (<>
+	return (<div className='flex-column d-flex '>
 			<div className="py-3 px-5">
 				<h2 className="text-dark">FlightTracker</h2>
 			</div>
@@ -50,15 +50,10 @@ function DashBoard(){
 					<option value="0.5">30 minutes</option>
 					<option value="1">1 hour</option>
 					<option value="2">2 hours</option>
-					<option value="5">5 hours</option>
-					<option value="10">10 hours</option>
-					<option value="24">24 hours</option>
-					<option value="48">2 days</option>
-					<option value="96">4 days</option>
 				</select>
 				</div>
 			</div>
-			<div className='m-4 px-2 px-md-4 border rounded-3 rounded'>
+			<div className='mx-auto px-2 px-md-4 border rounded-3 rounded table-cont'>
 				<table className="table table-striped table-hover">
 					<thead>
 						<tr>
@@ -91,7 +86,7 @@ function DashBoard(){
 				{flights && flights.length < 1 && <p className='text-danger text-center'>There are no flights in this time range</p>}
 			</div>
 			<div className='position-absolute bottom-0 text-center w-100 text-secondary fs-6'>Made by MaywedaDev</div>
-		</>)
+		</div>)
 }
 
 export default DashBoard
