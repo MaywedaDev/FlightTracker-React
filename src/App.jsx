@@ -11,11 +11,11 @@ function App() {
         <Switch>
 
           <Route exact path='/'>
-            <DashBaord />
+            <Login />
           </Route>
 
-          <Route exact path="/login">
-            <Login />
+          <Route exact path="/flights">
+            <DashBaord />
           </Route>
 
           <Route path="*">

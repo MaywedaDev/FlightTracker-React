@@ -1,9 +1,21 @@
 import { useState } from 'react'
 import styles from '../styles/Login.module.css'
+import { useHistory } from "react-router-dom";
 function Login(){
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+
+	const navigate = useHistory()
+
+	const [invalid, setInvalid] = useState(false)
+
+	function goToFlights(){
+		if(email != '' && password !=''){
+			navigate.push('/flights')
+		}
+		else{setInvalid(true)}
+	}
 
 	return (<div className="w-100 flex-grow-1 d-flex">
 		<div className='w-50 flex-grow-1 d-flex flex-column' >
@@ -18,15 +30,17 @@ function Login(){
 
 						<div className="mb-4 flex flex-column align-items-center">
 							<label><h6>Email</h6></label>
-							<input className="form-control" placeholder="Your Email" onChange={(e) => setEmail(e.target.value)} />
+							<input name="email" className="form-control" placeholder="Your Email" onChange={(e) => setEmail(e.target.value)} />
 						</div>
 
 						<div className="mb-4 flex flex-column align-items-center">
 							<label><h6>Password</h6></label>
-							<input className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+							<input name='password' className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
 						</div>
 
-						<button onClick={() => console.log(email, password)} className="btn w-100 text-light">Sign in</button>
+						{invalid && <p className='text-danger my-2'>Use a valid email and password</p>}
+
+						<button onClick={goToFlights} className="btn w-100 text-light">Sign in</button>
 					</div>
 				</div>
 			</div>
