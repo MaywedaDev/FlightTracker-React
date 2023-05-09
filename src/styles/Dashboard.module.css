@@ -5,3 +5,7 @@
 .select{
     width: 120px !important;
 }
+
+table{ 
+    max-width: 720px;
+}
