@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import styles from '../styles/DashBoard.module.css'
+import '../styles/dashboard.css'
 function DashBoard(){
 
 	const [flights, setFlights] = useState(null)
@@ -42,10 +42,10 @@ function DashBoard(){
 			<div className="py-3 px-5">
 				<h2 className="text-dark">FlightTracker</h2>
 			</div>
-			<div className={`${styles.ctrls} px-5 py-2 text-light mb-4`} >
+			<div className={`ctrls px-5 py-2 text-light mb-4`} >
 				{displayTime && <h1 className='mb-4'>Flights in the past {displayTime.value} {displayTime.type}</h1>}
 				<div className='d-flex'>
-				<select value={timeRange} onChange={(e) => {setTimeRange(e.target.value)}} name="" id="" className={`${styles.select} form-control mx-auto`}>
+				<select value={timeRange} onChange={(e) => {setTimeRange(e.target.value)}} name="" id="" className={`select form-control mx-auto`}>
 					<option value="0.16">10 minutes</option>
 					<option value="0.5">30 minutes</option>
 					<option value="1">1 hour</option>
